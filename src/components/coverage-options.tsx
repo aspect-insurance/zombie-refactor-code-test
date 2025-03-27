@@ -38,8 +38,6 @@ export default function CoverageOptions({
   setStage,
 }: CoverageOptionsProps) {
   const [selectedPlan, setSelectedPlan] = useState<string>(formData.selectedPlan || '');
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [pricingData, setPricingData] = useState<PricingData | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -84,13 +82,7 @@ export default function CoverageOptions({
   const handleSubmit = async () => {
     if (!selectedPlan) return;
 
-    setIsSubmitting(true);
-
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    alert('Application submitted!');
   };
 
   const getRiskIcon = (riskLevel: string) => {
@@ -134,36 +126,6 @@ export default function CoverageOptions({
     }
   };
 
-  if (isSubmitted) {
-    return (
-      <div className="text-center py-8 space-y-6">
-        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-900/50 border-2 border-green-500 text-green-400 mb-6">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-10 w-10"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <h2 className="text-3xl font-bold text-green-400">Application Submitted!</h2>
-        <p className="text-gray-300 max-w-md mx-auto text-lg">
-          Your zombie apocalypse insurance application has been received. We'll contact you when the
-          world ends!
-        </p>
-        <div className="pt-6">
-          <Button
-            onClick={() => window.location.reload()}
-            className="bg-red-600 hover:bg-red-700 text-white font-medium px-6 py-2 rounded-lg shadow-lg hover:shadow-red-600/30 transition-all"
-          >
-            Start Over
-          </Button>
-        </div>
-      </div>
-    );
-  }
 
   if (isLoading) {
     return (
@@ -345,17 +307,10 @@ export default function CoverageOptions({
         </Button>
         <Button
           onClick={handleSubmit}
-          disabled={!selectedPlan || isSubmitting}
+          disabled={!selectedPlan}
           className="bg-red-600 hover:bg-red-700 text-white font-medium px-6 py-2 rounded-lg shadow-lg hover:shadow-red-600/30 transition-all"
         >
-          {isSubmitting ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Processing
-            </>
-          ) : (
             'Submit Application'
-          )}
         </Button>
       </div>
     </div>
