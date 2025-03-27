@@ -10,6 +10,12 @@ This is a Vite/React & Express codebase.
 
 To get going, simply run `npm i` and `npm run dev`
 
+## Scope
+
+- Anything in the components/ui folder is from the Shadcn UI library and you do not have to touch
+- data.ts in server should not be changed
+
+
 
 
 
