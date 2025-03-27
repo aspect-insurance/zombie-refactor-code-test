@@ -1,0 +1,24 @@
+# Build artifacts
+dist
+build
+
+# Dependencies
+node_modules
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Cache
+.cache
+.npm
+
+# Coverage directory
+coverage
+
+# Logs
+*.log
+
+# Misc
+.DS_Store 
